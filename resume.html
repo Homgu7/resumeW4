@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>個人履歷</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f5f5f5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 20px;
+    }
+
+    .profile-img {
+      width: 140px;
+      height: 140px;
+      border-radius: 10px;
+      object-fit: cover;
+      margin-right: 20px;
+    }
+
+    .name {
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .section {
+      margin-top: 25px;
+    }
+
+    .section h2 {
+      border-left: 5px solid #007bff;
+      padding-left: 10px;
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 15px;
+      border: none;
+      background: #007bff;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    .dark-mode {
+      background: #222;
+      color: #eee;
+    }
+
+    .dark-mode .container {
+      background: #333;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+  <div class="header">
+    <!-- 照片 -->
+    <img src="images/IMG_0075.JPG" class="profile-img">
+
+    <div>
+      <div class="name">你的名字</div>
+      <div>亞洲大學學生</div>
+      <div>Email: your@email.com</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>自我介紹</h2>
+    <p>
+      我是一位積極學習的學生，具備良好的團隊合作能力與責任感，
+      對於排球與運動領域有高度興趣。
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>學歷</h2>
+    <ul>
+      <li>亞洲大學 - 就讀中</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>技能</h2>
+    <ul>
+      <li>HTML / CSS / JavaScript</li>
+      <li>排球運動</li>
+      <li>團隊合作</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>經歷</h2>
+    <ul>
+      <li>校隊排球訓練</li>
+      <li>社團活動參與</li>
+    </ul>
+  </div>
+
+  <button onclick="toggleDarkMode()">切換深色模式</button>
+</div>
+
+<script>
+  function toggleDarkMode() {
+    document.body.classList.toggle("dark-mode");
+  }
+</script>
+
+</body>
+</html>
