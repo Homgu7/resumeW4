@@ -2,51 +2,79 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8">
-  <title>個人履歷</title>
+  <title>朱凱榆｜個人履歷</title>
+
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      background: #f5f5f5;
+      font-family: "Noto Sans TC", Arial;
+      background: linear-gradient(135deg, #dfe9f3, #ffffff);
     }
 
     .container {
-      max-width: 900px;
-      margin: 30px auto;
+      max-width: 1000px;
+      margin: 40px auto;
+      display: grid;
+      grid-template-columns: 300px 1fr;
       background: white;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      animation: fadeIn 1s ease;
     }
 
-    .header {
-      display: flex;
-      align-items: center;
-      border-bottom: 2px solid #eee;
-      padding-bottom: 20px;
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    /* 左側 */
+    .sidebar {
+      background: #2c3e50;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
     }
 
     .profile-img {
-      width: 140px;
-      height: 140px;
-      border-radius: 10px;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
       object-fit: cover;
-      margin-right: 20px;
+      border: 4px solid white;
+      margin-bottom: 15px;
+      transition: 0.3s;
+    }
+
+    .profile-img:hover {
+      transform: scale(1.05);
     }
 
     .name {
-      font-size: 28px;
+      font-size: 24px;
       font-weight: bold;
     }
 
+    .info {
+      font-size: 14px;
+      margin-top: 5px;
+      opacity: 0.9;
+    }
+
+    /* 右側 */
+    .content {
+      padding: 30px;
+    }
+
     .section {
-      margin-top: 25px;
+      margin-bottom: 25px;
     }
 
     .section h2 {
-      border-left: 5px solid #007bff;
-      padding-left: 10px;
       font-size: 20px;
+      border-bottom: 2px solid #007bff;
+      display: inline-block;
+      padding-bottom: 5px;
       margin-bottom: 10px;
     }
 
@@ -54,13 +82,31 @@
       padding-left: 20px;
     }
 
+    /* 技能條 */
+    .skill {
+      margin-bottom: 10px;
+    }
+
+    .skill-bar {
+      background: #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .skill-level {
+      height: 10px;
+      width: 0;
+      background: linear-gradient(90deg, #007bff, #00c6ff);
+      transition: 1.5s;
+    }
+
     button {
-      margin-top: 20px;
+      margin-top: 15px;
       padding: 10px 15px;
       border: none;
       background: #007bff;
       color: white;
-      border-radius: 6px;
+      border-radius: 8px;
       cursor: pointer;
     }
 
@@ -68,13 +114,18 @@
       background: #0056b3;
     }
 
+    /* 深色模式 */
     .dark-mode {
-      background: #222;
+      background: #111;
       color: #eee;
     }
 
     .dark-mode .container {
-      background: #333;
+      background: #222;
+    }
+
+    .dark-mode .content {
+      color: #eee;
     }
   </style>
 </head>
@@ -82,57 +133,82 @@
 <body>
 
 <div class="container">
-  <div class="header">
-    <!-- 照片 -->
+
+  <!-- 左側 -->
+  <div class="sidebar">
     <img src="images/IMG_0075.JPG" class="profile-img">
 
-    <div>
-      <div class="name">朱凱榆</div>
-      <div>亞洲大學學生</div>
-      <div>Student ID:114018079</div>
-      <div>Email: kaiyuzhu8170@gmail.com</div>
+    <div class="name">朱凱榆</div>
+    <div class="info">亞洲大學學生</div>
+    <div class="info">Student ID:114018079</div>
+    <div class="info">kaiyuzhu8170@gmail.com</div>
+  </div>
+
+  <!-- 右側 -->
+  <div class="content">
+
+    <div class="section">
+      <h2>自我介紹</h2>
+      <p>
+        我是一位積極學習的學生，具備良好的團隊合作能力與責任感，
+        長期參與排球訓練，培養紀律與抗壓能力。
+      </p>
     </div>
+
+    <div class="section">
+      <h2>學歷</h2>
+      <ul>
+        <li>嘉義女中 - 2025</li>
+        <li>亞洲大學 聽力暨語言治療學系 - 就讀中</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>技能</h2>
+
+      <div class="skill">
+        排球
+        <div class="skill-bar">
+          <div class="skill-level" data-level="90%"></div>
+        </div>
+      </div>
+
+      <div class="skill">
+        團隊合作
+        <div class="skill-bar">
+          <div class="skill-level" data-level="85%"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="section">
+      <h2>經歷</h2>
+      <ul>
+        <li>校隊排球訓練</li>
+        <li>社團活動參與</li>
+      </ul>
+    </div>
+
+    <button onclick="toggleDarkMode()">切換深色模式</button>
+    <button onclick="window.print()">下載PDF</button>
+
   </div>
 
-  <div class="section">
-    <h2>自我介紹</h2>
-    <p>
-      我是一位積極學習的學生，具備良好的團隊合作能力與責任感，
-      對於排球與運動領域有高度興趣。
-    </p>
-  </div>
-
-  <div class="section">
-    <h2>學歷</h2>
-    <ul>
-      <li>嘉義女中 - 2025</li>
-      <li>亞洲大學 聽力暨語言治療學系 - 就讀中</li>
-    </ul>
-  </div>
-
-  <div class="section">
-    <h2>技能</h2>
-    <ul>
-      <li>排球運動</li>
-      <li>團隊合作</li>
-    </ul>
-  </div>
-
-  <div class="section">
-    <h2>經歷</h2>
-    <ul>
-      <li>校隊排球訓練</li>
-      <li>社團活動參與</li>
-    </ul>
-  </div>
-
-  <button onclick="toggleDarkMode()">切換深色模式</button>
 </div>
 
 <script>
   function toggleDarkMode() {
     document.body.classList.toggle("dark-mode");
   }
+
+  // 技能動畫
+  window.onload = () => {
+    const skills = document.querySelectorAll(".skill-level");
+    skills.forEach(skill => {
+      skill.style.width = skill.dataset.level;
+    });
+  };
 </script>
 
 </body>
