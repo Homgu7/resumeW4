@@ -28,7 +28,6 @@
       to {opacity: 1; transform: translateY(0);}
     }
 
-    /* 左側 */
     .sidebar {
       background: #2c3e50;
       color: white;
@@ -43,11 +42,6 @@
       object-fit: cover;
       border: 4px solid white;
       margin-bottom: 15px;
-      transition: 0.3s;
-    }
-
-    .profile-img:hover {
-      transform: scale(1.05);
     }
 
     .name {
@@ -61,7 +55,6 @@
       opacity: 0.9;
     }
 
-    /* 右側 */
     .content {
       padding: 30px;
     }
@@ -78,11 +71,6 @@
       margin-bottom: 10px;
     }
 
-    ul {
-      padding-left: 20px;
-    }
-
-    /* 技能條 */
     .skill {
       margin-bottom: 10px;
     }
@@ -101,7 +89,7 @@
     }
 
     button {
-      margin-top: 15px;
+      margin-top: 10px;
       padding: 10px 15px;
       border: none;
       background: #007bff;
@@ -114,7 +102,6 @@
       background: #0056b3;
     }
 
-    /* 深色模式 */
     .dark-mode {
       background: #111;
       color: #eee;
@@ -123,18 +110,18 @@
     .dark-mode .container {
       background: #222;
     }
-
-    .dark-mode .content {
-      color: #eee;
-    }
   </style>
 </head>
 
 <body>
 
+<!-- 🎵 背景音樂 -->
+<audio id="bgm" autoplay loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
 <div class="container">
 
-  <!-- 左側 -->
   <div class="sidebar">
     <img src="images/IMG_0075.JPG" class="profile-img">
 
@@ -142,9 +129,12 @@
     <div class="info">亞洲大學學生</div>
     <div class="info">Student ID:114018079</div>
     <div class="info">kaiyuzhu8170@gmail.com</div>
+
+    <!-- 🎵 音樂控制 -->
+    <button onclick="toggleMusic()">播放 / 暫停音樂</button>
+    <input type="range" min="0" max="1" step="0.01" onchange="changeVolume(this.value)">
   </div>
 
-  <!-- 右側 -->
   <div class="content">
 
     <div class="section">
@@ -198,11 +188,33 @@
 </div>
 
 <script>
+  const audio = document.getElementById("bgm");
+
+  // 防止瀏覽器擋自動播放
+  audio.play().catch(() => {
+    audio.muted = true;
+    audio.play();
+    setTimeout(() => {
+      audio.muted = false;
+    }, 200);
+  });
+
+  function toggleMusic() {
+    if (audio.paused) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+  }
+
+  function changeVolume(value) {
+    audio.volume = value;
+  }
+
   function toggleDarkMode() {
     document.body.classList.toggle("dark-mode");
   }
 
-  // 技能動畫
   window.onload = () => {
     const skills = document.querySelectorAll(".skill-level");
     skills.forEach(skill => {
@@ -212,4 +224,4 @@
 </script>
 
 </body>
-</html> 
+</html>
