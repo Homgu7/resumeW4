@@ -36,6 +36,34 @@ body {
   background: rgba(0,0,0,0.3);
 }
 
+/* 🎵 音樂按鈕 */
+.music-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 18px;
+  z-index: 3;
+  transition: 0.3s;
+}
+
+.music-btn:hover {
+  background: rgba(255,255,255,1);
+  transform: scale(1.1);
+}
+
+.music-btn.playing {
+  background: #4CAF50;
+  color: white;
+}
+
 /* 頭像 */
 .profile {
   position: absolute;
@@ -115,10 +143,20 @@ body {
 
 <body>
 
+<!-- 音樂 -->
+<audio id="bgm" loop>
+  <source src="music.mp3">
+</audio>
+
 <div class="card">
 
   <!-- 上方 -->
   <div class="header">
+
+    <!-- 🎵 音樂按鈕 -->
+    <div class="music-btn" onclick="toggleMusic()">🎵</div>
+
+    <!-- 頭像 -->
     <div class="profile">
       <img src="images/IMG_0075.JPG">
     </div>
@@ -199,6 +237,22 @@ body {
   </div>
 
 </div>
+
+<script>
+const audio = document.getElementById("bgm");
+
+function toggleMusic() {
+  const btn = document.querySelector(".music-btn");
+
+  if (audio.paused) {
+    audio.play();
+    btn.classList.add("playing");
+  } else {
+    audio.pause();
+    btn.classList.remove("playing");
+  }
+}
+</script>
 
 </body>
 </html>
