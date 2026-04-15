@@ -24,15 +24,16 @@ body {
 /* 上方背景 */
 .header {
   height: 220px;
-  background: url("images/bg.jpg") center/cover;
+  background: url("images/背景.jpg") center/cover no-repeat;
   position: relative;
 }
 
 /* 漸層遮罩 */
-.header {
-  height: 220px;
-  background: url("images/背景.jpg") center/cover no-repeat;
-  position: relative;
+.header::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.3);
 }
 
 /* 🎵 音樂按鈕 */
