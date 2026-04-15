@@ -2,189 +2,195 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<title>朱凱榆｜個人履歷</title>
+<title>朱凱榆｜履歷</title>
 
 <style>
 body {
   margin: 0;
-  font-family: "Noto Sans TC", Arial;
-  background: #eee;
+  font-family: Arial;
+  background: #e5e5e5;
 }
 
 /* 主容器 */
 .container {
-  max-width: 1000px;
-  margin: 30px auto;
-  display: flex;
-  background: white;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-
-/* 左側 */
-.sidebar {
-  width: 30%;
-  background: #555;
+  max-width: 900px;
+  margin: 40px auto;
+  background: #666;
   color: white;
-  padding: 30px 20px;
-}
-
-.profile-img {
-  width: 100%;
-  border-radius: 8px;
-  margin-bottom: 20px;
-}
-
-/* 左側標題 */
-.side-title {
-  margin-top: 20px;
-  font-weight: bold;
-  font-size: 18px;
-  border-bottom: 2px solid white;
-  padding-bottom: 5px;
-}
-
-/* 右側 */
-.content {
-  width: 70%;
-  padding: 40px;
+  padding: 40px 20px;
   position: relative;
 }
 
-/* 大標題 */
-.big-name {
-  font-size: 40px;
-  font-weight: bold;
-  letter-spacing: 2px;
-}
-
-.subtitle {
-  font-size: 18px;
-  color: #666;
-  margin-bottom: 30px;
-}
-
-/* 曲線背景 */
-.content::before {
+/* 中線 */
+.timeline::before {
   content: "";
   position: absolute;
   top: 0;
-  right: 0;
-  width: 300px;
-  height: 200px;
-  background: #ddd;
-  border-bottom-left-radius: 200px;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  background: white;
+  transform: translateX(-50%);
+  z-index: 1;
 }
 
-/* 區塊 */
-.section {
-  margin-bottom: 25px;
+/* 頭像 */
+.top-header {
+  text-align: center;
+  position: relative;
+  z-index: 3; /* 文字在最上層 */
 }
 
-.section h2 {
-  font-size: 20px;
-  color: #444;
-  margin-bottom: 10px;
+.profile-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 4px solid white;
 }
 
-/* 技能 */
+.title {
+  font-size: 28px;
+  margin-top: 10px;
+}
+
+/* 左右欄 */
+.row {
+  display: flex;
+  margin-top: 30px;
+  position: relative;
+  z-index: 2;
+}
+
+.col {
+  width: 50%;
+  padding: 20px;
+}
+
+/* 左右對齊 */
+.left {
+  text-align: right;
+}
+
+.right {
+  text-align: left;
+}
+
+/* 圓點 */
+.dot {
+  position: absolute;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  background: white;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+/* 區塊標題 */
+h2 {
+  border-bottom: 1px solid white;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+/* 技能條 */
 .skill-bar {
-  background: #ddd;
-  border-radius: 10px;
-  overflow: hidden;
+  background: #aaa;
+  height: 8px;
+  margin: 5px 0;
 }
 
 .skill-level {
-  height: 10px;
+  height: 8px;
   width: 0;
-  background: #555;
+  background: white;
   transition: 1.5s;
 }
 
-/* 按鈕 */
-button {
-  margin-top: 10px;
-  padding: 8px 12px;
-  border: none;
-  background: #333;
-  color: white;
-  cursor: pointer;
+/* 音樂按鈕 */
+.music {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 5;
 }
 
-button:hover {
+button {
+  padding: 8px 12px;
+  border: none;
   background: black;
+  color: white;
+  cursor: pointer;
 }
 </style>
 </head>
 
 <body>
 
-<!-- 🎵 音樂 -->
 <audio id="bgm" loop>
-  <source src="music.mp3" type="audio/mpeg">
+  <source src="music.mp3">
 </audio>
 
-<div class="container">
+<div class="container timeline">
 
-  <!-- 左側 -->
-  <div class="sidebar">
+  <!-- 上方 -->
+  <div class="top-header">
     <img src="images/IMG_0075.JPG" class="profile-img">
-
-    <div class="side-title">聯絡方式</div>
-    <p>Email<br>kaiyuzhu8170@gmail.com</p>
-
-    <div class="side-title">技能</div>
-    <p>排球<br>團隊合作</p>
-
-    <!-- 音樂控制 -->
-    <button onclick="toggleMusic()">音樂播放/暫停</button>
-    <input type="range" min="0" max="1" step="0.01" onchange="changeVolume(this.value)">
+    <div class="title">朱凱榆</div>
+    <div>亞洲大學</div>
   </div>
 
-  <!-- 右側 -->
-  <div class="content">
-
-    <div class="big-name">朱凱榆</div>
-    <div class="subtitle">亞洲大學學生</div>
-
-    <div class="section">
-      <h2>自我介紹</h2>
-      <p>
-        我是一位積極學習的學生，具備良好的團隊合作能力與責任感，
-        長期參與排球訓練，培養紀律與抗壓能力。
-      </p>
+  <!-- 第一排 -->
+  <div class="row">
+    <div class="col left">
+      <h2>個人資訊</h2>
+      <p>Email: kaiyuzhu8170@gmail.com</p>
+      <p>AU ID:114018079</p>
     </div>
-
-    <div class="section">
+    <div class="col right">
       <h2>經歷</h2>
       <p>校隊排球訓練</p>
       <p>社團活動參與</p>
     </div>
+    <div class="dot" style="top:200px;"></div>
+  </div>
 
-    <div class="section">
-      <h2>學歷</h2>
-      <p>嘉義女中 - 2025</p>
-      <p>亞洲大學 聽力暨語言治療學系</p>
-    </div>
-
-    <div class="section">
-      <h2>技能熟練度</h2>
-
+  <!-- 第二排 -->
+  <div class="row">
+    <div class="col left">
+      <h2>技能</h2>
       排球
       <div class="skill-bar">
-        <div class="skill-level" data-level="90%"></div>
+        <div class="skill-level" data-level="82%"></div>
       </div>
 
       團隊合作
       <div class="skill-bar">
-        <div class="skill-level" data-level="85%"></div>
+        <div class="skill-level" data-level="87%"></div>
       </div>
-
+    
+     創造力
+      <div class="skill-bar">
+        <div class="skill-level" data-level="75%"></div>
+      </div>
     </div>
 
-    <button onclick="window.print()">下載PDF</button>
 
+    <div class="col right">
+      <h2>學歷</h2>
+      <p>嘉義女中 - 2025</p>
+      <p>亞洲大學 聽語系</p>
+    </div>
+
+    <div class="dot" style="top:420px;"></div>
   </div>
 
+</div>
+
+<!-- 音樂控制 -->
+<div class="music">
+  <button onclick="toggleMusic()">🎵</button>
 </div>
 
 <script>
@@ -198,14 +204,9 @@ function toggleMusic() {
   }
 }
 
-function changeVolume(value) {
-  audio.volume = value;
-}
-
 window.onload = () => {
-  const skills = document.querySelectorAll(".skill-level");
-  skills.forEach(skill => {
-    skill.style.width = skill.dataset.level;
+  document.querySelectorAll(".skill-level").forEach(el=>{
+    el.style.width = el.dataset.level;
   });
 };
 </script>
